@@ -1,0 +1,63 @@
+package bolaoweb.bean;
+
+import bolaoweb.model.Campeonato;
+import bolaoweb.modelDAO.CampeonatoDAO;
+import java.util.Objects;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+@ManagedBean
+@SessionScoped
+public class CampeonatoBEAN {
+
+    private Campeonato campeonato = new Campeonato();
+    private CampeonatoDAO campeonatoDAO = new CampeonatoDAO();
+
+    public CampeonatoBEAN() {
+    }
+
+    public Campeonato getCampeonato() {
+        return campeonato;
+    }
+
+    public void setCampeonato(Campeonato campeonato) {
+        this.campeonato = campeonato;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 41 * hash + Objects.hashCode(this.campeonato);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CampeonatoBEAN other = (CampeonatoBEAN) obj;
+        if (!Objects.equals(this.campeonato, other.campeonato)) {
+            return false;
+        }
+        return true;
+    }
+
+    public String inserirCampeonato(){
+        campeonatoDAO.inserirCampeonato(campeonato);
+        return "inserido";
+    }
+    
+    public String editarCampeonato(){
+        campeonatoDAO.editarCampeonato(campeonato);
+        return "editado";
+    }
+        
+    public String excluirCampeonato(){
+        campeonatoDAO.excluirCampeonato(campeonato);
+        return "excluido";
+    }
+}

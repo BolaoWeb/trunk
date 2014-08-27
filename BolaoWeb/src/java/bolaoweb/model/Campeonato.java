@@ -1,0 +1,127 @@
+package bolaoweb.model;
+
+import java.io.Serializable;
+import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="CAMPEONATO")
+@NamedQueries(
+        {
+            @NamedQuery(name="Campeonato.findAll", query="SELECT C FROM Campeonato C"),
+            @NamedQuery(name="Campeonato.findByID", query="SELECT C FROM Campeonato C WHERE C.id = :ID")
+        }
+)
+public class Campeonato implements Serializable{
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @Column(length=100, name="NOME", nullable=false)
+    private String nome;
+
+    @Column(length=100, name="ESCOPO", nullable=false)
+    private String escopo;
+
+    @Column(length=100, name="DATAINICIO", nullable=false)
+    private String datainicio;
+
+    @Column(length=100, name="DATAFIM", nullable=false)
+    private String datafim;
+
+    @Column(length=100, name="TIPO", nullable=false)
+    private String tipo;
+
+    @Column(length=100, name="OBSERVACAO", nullable=true)
+    private String observacao;
+
+    //@Column(length=100, name="PARTIDA", nullable=true)
+    //private String partida;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEscopo() {
+        return escopo;
+    }
+
+    public void setEscopo(String escopo) {
+        this.escopo = escopo;
+    }
+
+    public String getDatainicio() {
+        return datainicio;
+    }
+
+    public void setDatainicio(String datainicio) {
+        this.datainicio = datainicio;
+    }
+
+    public String getDatafim() {
+        return datafim;
+    }
+
+    public void setDatafim(String datafim) {
+        this.datafim = datafim;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Campeonato other = (Campeonato) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+}
