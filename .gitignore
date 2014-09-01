@@ -1,1 +1,6 @@
-/BolaoWeb/dist/
+*.class
+nbproject/private/
+nbproject
+nbproject/
+build/
+/Trabalho_ISS_PetShop/dist/
