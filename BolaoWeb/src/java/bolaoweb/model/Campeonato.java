@@ -2,46 +2,25 @@ package bolaoweb.model;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CAMPEONATO")
-@NamedQueries(
-        {
-            @NamedQuery(name="Campeonato.findAll", query="SELECT C FROM Campeonato C"),
-            @NamedQuery(name="Campeonato.findByID", query="SELECT C FROM Campeonato C WHERE C.id = :ID")
-        }
-)
+@Table(name="campeonato")
 public class Campeonato implements Serializable{
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
-    @Column(length=100, name="NOME", nullable=false)
     private String nome;
-
-    @Column(length=100, name="ESCOPO", nullable=false)
     private String escopo;
-
-    @Column(length=100, name="DATAINICIO", nullable=false)
     private String datainicio;
-
-    @Column(length=100, name="DATAFIM", nullable=false)
     private String datafim;
-
-    @Column(length=100, name="TIPO", nullable=false)
     private String tipo;
-
-    @Column(length=100, name="OBSERVACAO", nullable=true)
     private String observacao;
 
     //@Column(length=100, name="PARTIDA", nullable=true)

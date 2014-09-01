@@ -2,6 +2,7 @@ package bolaoweb.bean;
 
 import bolaoweb.model.Campeonato;
 import bolaoweb.modelDAO.CampeonatoDAO;
+import java.util.List;
 import java.util.Objects;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -12,6 +13,7 @@ public class CampeonatoBEAN {
 
     private Campeonato campeonato = new Campeonato();
     private CampeonatoDAO campeonatoDAO = new CampeonatoDAO();
+    private List<Campeonato> listaCampeonato;
 
     public CampeonatoBEAN() {
     }
@@ -48,16 +50,27 @@ public class CampeonatoBEAN {
 
     public String inserirCampeonato(){
         campeonatoDAO.inserirCampeonato(campeonato);
-        return "inserido";
+        campeonato.setNome(null);
+        campeonato.setEscopo(null);
+        campeonato.setDatainicio(null);
+        campeonato.setDatafim(null);
+        campeonato.setTipo(null);
+        campeonato.setObservacao(null);
+        return "index";
     }
     
     public String editarCampeonato(){
         campeonatoDAO.editarCampeonato(campeonato);
-        return "editado";
+        return "index";
     }
         
     public String excluirCampeonato(){
         campeonatoDAO.excluirCampeonato(campeonato);
-        return "excluido";
+        return "index";
+    }
+
+    public List listarCampeonato(){
+        listaCampeonato = campeonatoDAO.getLista();
+        return this.listaCampeonato;
     }
 }
