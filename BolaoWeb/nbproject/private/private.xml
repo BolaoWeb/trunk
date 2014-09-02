@@ -5,8 +5,10 @@
         <group>
             <file>file:/C:/Users/Alison/Downloads/Nova%20pasta/UEM/Donizete%20-%20ISS/Projeto/trunk/BolaoWeb/web/index.xhtml</file>
             <file>file:/C:/Users/Alison/Downloads/Nova%20pasta/UEM/Donizete%20-%20ISS/Projeto/trunk/BolaoWeb/src/java/bolaoweb/model/Campeonato.java</file>
+            <file>file:/C:/Users/Alison/Downloads/Nova%20pasta/UEM/Donizete%20-%20ISS/Projeto/trunk/BolaoWeb/web/cadastro_campeonato.xhtml</file>
             <file>file:/C:/Users/Alison/Downloads/Nova%20pasta/UEM/Donizete%20-%20ISS/Projeto/trunk/BolaoWeb/src/java/bolaoweb/bean/CampeonatoBEAN.java</file>
             <file>file:/C:/Users/Alison/Downloads/Nova%20pasta/UEM/Donizete%20-%20ISS/Projeto/trunk/BolaoWeb/src/java/bolaoweb/modelDAO/CampeonatoDAO.java</file>
+            <file>file:/C:/Users/Alison/Downloads/Nova%20pasta/UEM/Donizete%20-%20ISS/Projeto/trunk/BolaoWeb/web/consulta_campeonato.xhtml</file>
         </group>
     </open-files>
 </project-private>
