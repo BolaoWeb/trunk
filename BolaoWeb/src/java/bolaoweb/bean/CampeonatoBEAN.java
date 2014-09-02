@@ -50,27 +50,45 @@ public class CampeonatoBEAN {
 
     public String inserirCampeonato(){
         campeonatoDAO.inserirCampeonato(campeonato);
-        campeonato.setNome(null);
-        campeonato.setEscopo(null);
-        campeonato.setDatainicio(null);
-        campeonato.setDatafim(null);
-        campeonato.setTipo(null);
-        campeonato.setObservacao(null);
-        return "index";
+        return "consulta_campeonato";
     }
     
     public String editarCampeonato(){
         campeonatoDAO.editarCampeonato(campeonato);
-        return "index";
+        return "consulta_campeonato";
     }
         
-    public String excluirCampeonato(){
-        campeonatoDAO.excluirCampeonato(campeonato);
-        return "index";
+    public String excluirCampeonato(Campeonato c){
+        campeonatoDAO.excluirCampeonato(c);
+        return "consulta_campeonato";
     }
 
     public List listarCampeonato(){
         listaCampeonato = campeonatoDAO.getLista();
         return this.listaCampeonato;
+    }
+
+    public String carregaCampeonato(Campeonato c){
+        campeonato = c;
+        return "cadastro_campeonato";
+    }
+    
+    public String novoCampeonato(){
+        campeonato.setId(null);
+        campeonato.setNome(null);
+        campeonato.setEscopo(null);
+        campeonato.setDatainicio(null);
+        campeonato.setDatafim(null);
+        campeonato.setTipoPontos(null);
+        campeonato.setTipoMataMata(null);
+        campeonato.setObservacao(null);
+        return "cadastro_campeonato";
+    }
+
+    public String confirmarCampeonato(){
+        if (listaCampeonato.contains(campeonato)) {
+            return editarCampeonato();
+        }
+        return inserirCampeonato();
     }
 }

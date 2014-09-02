@@ -7,72 +7,7 @@
         <title>Teste - Cadastro Campeonato</title>
     </h:head>
     <h:body>
-        <center>
-            <h:form>
-                Cadastro de Campeonato <br/><br/>
-                <h:panelGrid columns="2">
-                    ID: <h:inputText id="id"/>
-                    Nome: <h:inputText id="nome" value="#{campeonatoBEAN.campeonato.nome}"/>
-                    Escopo: <h:selectOneMenu id="escopo" value="#{campeonatoBEAN.campeonato.escopo}">
-                              <f:selectItem itemValue="regional"/>
-                              <f:selectItem itemValue="estadual"/>
-                              <f:selectItem itemValue="nacional"/>
-                              <f:selectItem itemValue="continental"/>
-                              <f:selectItem itemValue="mundial"/>
-                            </h:selectOneMenu>
-                    Data Início: <h:inputText id="datainicio" value="#{campeonatoBEAN.campeonato.datainicio}"/>
-                    Data Fim: <h:inputText id="datafim" value="#{campeonatoBEAN.campeonato.datafim}"/>
-                    Tipo: <h:inputText value="#{campeonatoBEAN.campeonato.tipo}"/> <br/>
-                    <h:panelGrid columns="4">
-                       Pontos <h:selectBooleanCheckbox id="tipo"/>
-                       Mata-Mata <h:selectBooleanCheckbox id="tipo2"/>
-                    </h:panelGrid>
-                    Observações: <h:inputTextarea id="observacoes" value="#{campeonatoBEAN.campeonato.observacao}"/>               
-                    <h:commandButton value="Confirmar" action="#{campeonatoBEAN.inserirCampeonato()}"/> <br/><br/>
-                <h:commandButton value="Voltar"/> <br/><br/>
-                </h:panelGrid>
-                <h:dataTable value="#{campeonatoBEAN.listarCampeonato()}" var="tabela" border="1">
-                    <h:column>
-                        <f:facet name="header">
-                            ID
-                        </f:facet>
-                        <h:outputText value="#{tabela.id}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            Nome
-                        </f:facet>
-                        <h:outputText value="#{tabela.nome}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            Escopo
-                        </f:facet>
-                        <h:outputText value="#{tabela.escopo}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            Data Inicio
-                        </f:facet>
-                        <h:outputText value="#{tabela.datainicio}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            Data Fim
-                        </f:facet>
-                        <h:outputText value="#{tabela.datafim}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            Tipo.
-                        </f:facet>
-                        <h:outputText value="#{tabela.tipo}"/>
-                    </h:column>
-                </h:dataTable>
-                <br/><br/>
-                ISS - Implementação de Sistema de Software - Departamento de Informática - UEM
-            </h:form>
-        </center>
+        BolaoWeb!
     </h:body>
 </html>
 

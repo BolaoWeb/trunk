@@ -20,7 +20,8 @@ public class Campeonato implements Serializable{
     private String escopo;
     private String datainicio;
     private String datafim;
-    private String tipo;
+    private Boolean tipopontos;
+    private Boolean tipomatamata;
     private String observacao;
 
     //@Column(length=100, name="PARTIDA", nullable=true)
@@ -66,12 +67,20 @@ public class Campeonato implements Serializable{
         this.datafim = datafim;
     }
 
-    public String getTipo() {
-        return tipo;
+    public Boolean getTipoPontos() {
+        return tipopontos;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipoPontos(Boolean tipopontos) {
+        this.tipopontos = tipopontos;
+    }
+    
+     public Boolean getTipoMataMata() {
+        return tipomatamata;
+    }
+
+    public void setTipoMataMata(Boolean tipomatamata) {
+        this.tipomatamata = tipomatamata;
     }
 
     public String getObservacao() {

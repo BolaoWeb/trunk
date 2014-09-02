@@ -4,7 +4,6 @@ import bolaoweb.hibernate.HibernateUtil;
 import bolaoweb.model.Campeonato;
 import java.util.List;
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -19,7 +18,6 @@ public class CampeonatoDAO {
 
         Criteria crit = session.createCriteria(Campeonato.class);
         this.listaCampeonato = crit.list();
-
         return listaCampeonato;
     }
     
@@ -30,10 +28,11 @@ public class CampeonatoDAO {
 
             session.save(campeonato);
             trans.commit();
-            session.close();            
-        } catch ( HibernateException e ){
+        } catch ( Exception e ){
             e.printStackTrace();
-        } 
+        } finally {
+            session.close();
+        }
     }
 
     public void editarCampeonato( Campeonato campeonato ){
@@ -41,11 +40,12 @@ public class CampeonatoDAO {
             session = HibernateUtil.getSessionFactory().openSession();
             trans = session.beginTransaction();
 
-            session.merge(campeonato);
+            session.update(campeonato);
             trans.commit();
-            session.close();
-        } catch( HibernateException e ){
+        } catch( Exception e ){
             e.printStackTrace();
+        } finally{
+            session.close();
         }
     }
 
@@ -56,9 +56,10 @@ public class CampeonatoDAO {
 
             session.delete(campeonato);
             trans.commit();
-            session.close();
-        } catch( HibernateException e ){
+        } catch( Exception e ){
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 }

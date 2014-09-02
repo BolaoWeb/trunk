@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Consulta de Campeonato</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h:form>
+                Campeonato <br/><br/>
+                <h:commandButton value="+ Novo Campeonato" action="#{campeonatoBEAN.novoCampeonato()}"/> <br/><br/>
+                <h:panelGrid columns="3">
+                    Buscar Campeonato:
+                        <h:inputText id="filtro"/> <h:commandButton value="Buscar"/> <br/>
+                </h:panelGrid>
+                <h:dataTable value="#{campeonatoBEAN.listarCampeonato()}" var="tabela" border="1">
+                    <h:column>
+                        <f:facet name="header">
+                            ID
+                        </f:facet>
+                        <h:outputText value="#{tabela.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Nome
+                        </f:facet>
+                        <h:outputText value="#{tabela.nome}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Escopo
+                        </f:facet>
+                        <h:outputText value="#{tabela.escopo}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Data Inicio
+                        </f:facet>
+                        <h:outputText value="#{tabela.datainicio}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Data Fim
+                        </f:facet>
+                        <h:outputText value="#{tabela.datafim}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Pontos
+                        </f:facet>
+                        <h:selectBooleanCheckbox disabled="true" value="#{tabela.tipoPontos}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Mata-Mata
+                        </f:facet>
+                        <h:selectBooleanCheckbox disabled="true" value="#{tabela.tipoMataMata}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Ações
+                        </f:facet>
+                        <h:panelGrid columns="2">
+                            <h:commandButton value="Editar" action="#{campeonatoBEAN.carregaCampeonato(tabela)}"/>
+                            <h:commandButton value="Remover" action="#{campeonatoBEAN.excluirCampeonato(tabela)}"/>
+                        </h:panelGrid>
+                    </h:column>
+                </h:dataTable>
+                <br/>
+                ISS - Implementação de Sistema de Software - Departamento de Informática - UEM
+            </h:form>
+        </center>
+    </h:body>
+</html>
+
