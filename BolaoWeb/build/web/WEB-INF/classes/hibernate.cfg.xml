@@ -12,5 +12,6 @@
     <mapping class="bolaoweb.model.Apostador"/>
     <mapping class="bolaoweb.model.Operador"/>
     <mapping class="bolaoweb.model.Usuario"/>
+    <mapping class="bolaoweb.model.Partidas"/>
   </session-factory>
 </hibernate-configuration>

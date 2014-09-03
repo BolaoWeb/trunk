@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Bolão Web - Consulta de Partidas</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h:form>
+                Consulta de Partidas <br/><br/>
+                <h:panelGrid columns="2">
+                    ID Time Casa: <h:inputText id="timeCasaTxt" value="#{partidasBEAN.partidas.idTimeCasa}"/>
+                    ID Time Visitante: <h:inputText id="timeVisitanteTxt" value="#{partidasBEAN.partidas.idTimeVisitante}"/>
+                    Data: <h:inputText id="dataTxt" value="#{partidasBEAN.partidas.data}"/>                        
+                    Gols Time Casa: <h:inputText id="golsTimeCasaTxt" value="#{partidasBEAN.partidas.golsTimeCasa}"/>
+                    Gols Time Visitante: <h:inputText id="golsTimeVisitanteTxt" value="#{partidasBEAN.partidas.golsTimeVisitante}"/>
+                    <h:inputHidden></h:inputHidden>
+                    <h:commandButton value="Salvar" action="#{partidasBEAN.salvarPartida()}"/>
+                </h:panelGrid>
+                <br/>
+                <h:dataTable value="#{partidasBEAN.consultarPartidas()}" var="dados" border="1">
+                    <h:column>
+                        <f:facet name="header">
+                            Id Partida
+                        </f:facet>
+                        <h:outputText value="#{dados.id}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            Id Time Casa
+                        </f:facet>
+                        <h:outputText value="#{dados.idTimeCasa}"/>
+                    </h:column>
+                                        
+                    <h:column>
+                        <f:facet name="header">
+                            Id Time Visitante
+                        </f:facet>
+                        <h:outputText value="#{dados.idTimeVisitante}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            Data
+                        </f:facet>
+                        <h:outputText value="#{dados.data}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            Gols Time Casa
+                        </f:facet>
+                        <h:outputText value="#{dados.golsTimeCasa}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            Gols Time Visitante
+                        </f:facet>
+                        <h:outputText value="#{dados.golsTimeVisitante}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            Ações
+                        </f:facet>
+                        <h:commandButton value="Editar" action="#{partidasBEAN.carregarPartida(dados)}"/>
+                        <h:commandButton value="Remover" action="#{partidasBEAN.deletePartida(dados)}"/>
+                    </h:column>
+                    
+                </h:dataTable>
+                <br/>
+                <h:link outcome="index" value="Retornar ao Menu Inicial" />
+            </h:form>
+        </center>    
+    </h:body>
+</html>
+
