@@ -4,19 +4,18 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Consulta de Apostador</title>
+        <title>Consulta de Operador</title>
     </h:head>
     <h:body>
         <center>
             <h:form>
-                Apostador <br/><br/>
-                <h:commandButton value="+ Novo Apostador" action="#{apostadorBEAN.novoApostador()}"/> <br/><br/>
+                Operador <br/><br/>
+                <h:commandButton value="+ Novo Operador" action="#{operadorBEAN.novoOperador()}"/> <br/><br/>
                 <h:panelGrid columns="3">
-                    Buscar Apostador:
-                        <h:inputText id="filtro"/> 
-                        <h:commandButton value="Buscar"/> <br/>
+                    Buscar Operador:
+                        <h:inputText id="filtro"/> <h:commandButton value="Buscar"/> <br/>
                 </h:panelGrid>
-                <h:dataTable value="#{apostadorBEAN.listarApostador()}" var="tabela" border="1">
+                <h:dataTable value="#{operadorBEAN.listarOperador()}" var="tabela" border="1">
                     <h:column>
                         <f:facet name="header">
                             ID
@@ -33,13 +32,7 @@
                         <f:facet name="header">
                             Sobrenome
                         </f:facet>
-                        <h:outputText value="#{tabela.sobrenome}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            Apelido
-                        </f:facet>
-                        <h:outputText value="#{tabela.apelido}"/>
+                        <h:outputText  value="#{tabela.sobrenome}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
@@ -49,17 +42,11 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            Data Nascimento
-                        </f:facet>
-                        <h:outputText value="#{tabela.datanascimento}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
                             Ações
                         </f:facet>
                         <h:panelGrid columns="2">
-                            <h:commandButton value="Editar" action="#{apostadorBEAN.carregaApostador(tabela)}"/>
-                            <h:commandButton value="Remover" action="#{apostadorBEAN.excluirApostador(tabela)}"/>
+                            <h:commandButton value="Editar" action="#{operadorBEAN.carregaOperador(tabela)}"/>
+                            <h:commandButton value="Remover" action="#{operadorBEAN.excluirOperador(tabela)}"/>
                         </h:panelGrid>
                     </h:column>
                 </h:dataTable>

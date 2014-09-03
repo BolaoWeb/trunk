@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastro Apostador</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h:form>
+                Cadastro de Apostador <br/><br/>
+                <h:panelGrid columns="2">
+                    ID: 
+                        <h:inputText id="id" disabled="true" value="#{apostadorBEAN.apostador.id}"/>
+                    Nome: 
+                        <h:inputText id="nome" value="#{apostadorBEAN.apostador.nome}"/>
+                    Sobrenome: 
+                        <h:inputText id="sobrenome" value="#{apostadorBEAN.apostador.sobrenome}"/>
+                    Apelido: 
+                        <h:inputText id="apelido" value="#{apostadorBEAN.apostador.apelido}"/>
+                    Email: 
+                        <h:inputText id="email" value="#{apostadorBEAN.apostador.email}"/>
+                    Data Nascimento:
+                        <h:inputText id="datanascimento" value="#{apostadorBEAN.apostador.datanascimento}"/>
+                    Senha:
+                        <h:inputSecret id="senha" value="#{apostadorBEAN.apostador.senha}"/>
+                    <h:commandButton value="Confirmar" action="#{apostadorBEAN.confirmarApostador()}"/> <br/><br/>
+                    <h:commandButton value="Voltar" action="consulta_apostador"/> <br/><br/>
+                </h:panelGrid>
+                <br/><br/>
+                ISS - Implementação de Sistema de Software - Departamento de Informática - UEM
+            </h:form>
+        </center>
+    </h:body>
+</html>
+

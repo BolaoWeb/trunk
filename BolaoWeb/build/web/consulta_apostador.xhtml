@@ -10,46 +10,57 @@
         <center>
             <h:form>
                 Apostador <br/><br/>
-                <h:commandButton value="+ Novo Apostador"/> <br/><br/>
+                <h:commandButton value="+ Novo Apostador" action="#{apostadorBEAN.novoApostador()}"/> <br/><br/>
                 <h:panelGrid columns="3">
-                    Buscar Apostador: <h:inputText id="filtro"/> <h:commandButton value="Buscar"/> <br/>
+                    Buscar Apostador:
+                        <h:inputText id="filtro"/> 
+                        <h:commandButton value="Buscar"/> <br/>
                 </h:panelGrid>
-                <h:dataTable value="" var="grid" border="1">
+                <h:dataTable value="#{apostadorBEAN.listarApostador()}" var="tabela" border="1">
                     <h:column>
                         <f:facet name="header">
                             ID
                         </f:facet>
-                        <h:outputText value="1"/>
+                        <h:outputText value="#{tabela.id}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             Nome
                         </f:facet>
-                        <h:outputText value="Alison"/>
+                        <h:outputText value="#{tabela.nome}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             Sobrenome
                         </f:facet>
-                        <h:outputText value="Orita"/>
+                        <h:outputText value="#{tabela.sobrenome}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             Apelido
                         </f:facet>
-                        <h:outputText value="Tginho"/>
+                        <h:outputText value="#{tabela.apelido}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            e-mail
+                            Email
                         </f:facet>
-                        <h:outputText value="keijo.alison@hotmail.com"/>
+                        <h:outputText value="#{tabela.email}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            Dt. Nasc.
+                            Data Nascimento
                         </f:facet>
-                        <h:outputText value="11/11/1992"/>
+                        <h:outputText value="#{tabela.datanascimento}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Ações
+                        </f:facet>
+                        <h:panelGrid columns="2">
+                            <h:commandButton value="Editar" action="#{apostadorBEAN.carregaApostador(tabela)}"/>
+                            <h:commandButton value="Remover" action="#{apostadorBEAN.excluirApostador(tabela)}"/>
+                        </h:panelGrid>
                     </h:column>
                 </h:dataTable>
                 <br/>

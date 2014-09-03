@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastro Operador</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h:form>
+                Cadastro de Operador <br/><br/>
+                <h:panelGrid columns="2">
+                    ID: 
+                        <h:inputText id="id" disabled="true" value="#{operadorBEAN.operador.id}"/>
+                    Nome: 
+                        <h:inputText id="nome" value="#{operadorBEAN.operador.nome}"/>
+                    Sobrenome: 
+                       <h:inputText id="sobrenome" value="#{operadorBEAN.operador.sobrenome}"/>
+                    Email: 
+                        <h:inputText id="email" value="#{operadorBEAN.operador.email}"/>
+                    Senha:
+                        <h:inputSecret id="senha" value="#{operadorBEAN.operador.senha}"/>
+                    <h:commandButton value="Confirmar" action="#{operadorBEAN.confirmarOperador()}"/> <br/><br/>
+                    <h:commandButton value="Voltar" action="consulta_operador"/> <br/><br/>
+                </h:panelGrid>
+                <br/><br/>
+                ISS - Implementação de Sistema de Software - Departamento de Informática - UEM
+            </h:form>
+        </center>
+    </h:body>
+</html>
+

@@ -13,7 +13,8 @@
                 <h:commandButton value="+ Novo Campeonato" action="#{campeonatoBEAN.novoCampeonato()}"/> <br/><br/>
                 <h:panelGrid columns="3">
                     Buscar Campeonato:
-                        <h:inputText id="filtro"/> <h:commandButton value="Buscar"/> <br/>
+                        <h:inputText id="filtro"/>
+                        <h:commandButton value="Buscar"/> <br/>
                 </h:panelGrid>
                 <h:dataTable value="#{campeonatoBEAN.listarCampeonato()}" var="tabela" border="1">
                     <h:column>
