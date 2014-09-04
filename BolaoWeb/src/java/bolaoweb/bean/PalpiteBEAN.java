@@ -2,16 +2,23 @@ package bolaoweb.bean;
 
 import bolaoweb.model.Palpite;
 import bolaoweb.modelDAO.PalpiteDAO;
+import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author Massao
  */
+@ManagedBean
+@SessionScoped
 public class PalpiteBEAN {
     
     private Palpite palpite = new Palpite();
     private PalpiteDAO palpiteDAO = new PalpiteDAO();
+    private List<Palpite> listaPalpite;
 
     public Palpite getPalpite() {
         return palpite;
@@ -21,18 +28,38 @@ public class PalpiteBEAN {
         this.palpite = palpite;
     }
 
-    public PalpiteDAO getPalpiteDAO() {
-        return palpiteDAO;
+    public List listaPalpite() {
+        listaPalpite = palpiteDAO.getLista();
+        return listaPalpite;
     }
 
-    public void setPalpiteDAO(PalpiteDAO palpiteDAO) {
-        this.palpiteDAO = palpiteDAO;
+    public PalpiteBEAN() {
+    }
+    
+    public String incluirPalpite(){
+        palpiteDAO.incluirPalpite(palpite);
+        palpite.setDataCadastro(Calendar.getInstance().getTime());
+        palpite.setGolsCasa(null);
+        palpite.setGolsVisitante(null);
+        palpite.setIdApostador(null);
+        palpite.setIdPartida(null);
+        return "consulta_palpite";
+    }
+    
+    public String alterarPalpite(){
+        palpiteDAO.alterarPalpite(palpite);
+        return "consulta_palpite";
+    }
+    
+    public String excluirPalpite(Palpite p){
+        palpiteDAO.excluirPalpite(p);
+        return "consulta_palpite";
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.palpite);
+        hash = 79 * hash + Objects.hashCode(this.palpite);
         return hash;
     }
 
@@ -51,21 +78,26 @@ public class PalpiteBEAN {
         return true;
     }
     
-    public String incluirPalpite(Palpite palpite){
-        palpiteDAO.incluirPalpite(palpite);
-        return "incluído";
+    public String carregaPalpite(Palpite p){
+        palpite = p;
+        return "cadastro_palpite";
     }
     
-    
-    public String alterarPalpite(Palpite palpite){
-        palpiteDAO.alterarPalpite(palpite);
-        return "alterado";
+    public String novoPalpite(){
+        palpite.setId(null);
+        palpite.setIdApostador(null);
+        palpite.setIdPartida(null);
+        palpite.setGolsCasa(null);
+        palpite.setGolsVisitante(null);
+        palpite.setDataCadastro(null);
+        return "cadastro_palpite";
     }
     
-    
-    public String excluirPalpite(Palpite palpite){
-        palpiteDAO.excluirPalpite(palpite);
-        return "excluído";
+    public String confirmaPalpite(){
+        if (listaPalpite.contains(palpite)){
+            return alterarPalpite();
+        }
+        return incluirPalpite();
     }
     
 }

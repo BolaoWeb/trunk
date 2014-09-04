@@ -1,25 +1,26 @@
 package bolaoweb.bean;
 
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import bolaoweb.model.Times;
 import bolaoweb.modelDAO.TimesDAO;
+import java.util.List;
 import java.util.Objects;
 
 /**
  *
  * @author Massao
  */
-
 @ManagedBean
 @SessionScoped
-public class TimesBEAN {
+public class TimesBEAN implements Serializable {
     
     private Times equipe = new Times();
-    private TimesDAO timeDAO =new TimesDAO();
-    
-    public TimesBEAN(){
-        
+    private TimesDAO equipeDAO = new TimesDAO();
+    private List<Times> listaEquipe;
+
+    public TimesBEAN() {
     }
 
     public Times getEquipe() {
@@ -29,26 +30,35 @@ public class TimesBEAN {
     public void setEquipe(Times equipe) {
         this.equipe = equipe;
     }
-
+    
+    public List listarEquipes(){
+        listaEquipe = equipeDAO.getList();        
+        return listaEquipe;
+    }
+    
     public String incluirTime(){
-        timeDAO.incluirTime(equipe);
-        return "incluído";
+        equipeDAO.incluirTime(equipe);
+        equipe.setIdLocalTime(null);
+        equipe.setNome(null);
+        equipe.setTipo(null);
+        
+        return "consulta_time";
     }
     
     public String alterarTime(){
-        timeDAO.alterarTime(equipe);
-        return "alterado";
+        equipeDAO.alterarTime(equipe);
+        return "consulta_time";
     }
-        
-    public String excluirTime(){
-        timeDAO.excluirTime(equipe);
-        return "excluido";
+    
+    public String excluirTime(Times t){
+        equipeDAO.excluirTime(t);
+        return "consulta_time";
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + Objects.hashCode(this.equipe);
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.equipe);
         return hash;
     }
 
@@ -66,5 +76,25 @@ public class TimesBEAN {
         }
         return true;
     }
-
+    
+    public String carregaTime(Times t){
+        equipe = t;
+        return "cadastro_times";
+    }
+    
+    public String novoTime(){
+        equipe.setId(null);
+        equipe.setNome(null);
+        equipe.setTipo(null);
+        equipe.setIdLocalTime(null);
+        return "cadastro_times";
+    }
+    
+    public String confirmaTime(){
+        if (listaEquipe.contains(equipe)){
+            return alterarTime();
+        }
+        return incluirTime();
+    }
+    
 }

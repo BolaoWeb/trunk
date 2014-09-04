@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastro Palpite</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h:form>
+                Cadastro Palpite<br/><br/>
+                <h:panelGrid columns="2">
+                    Id:
+                    <h:inputText id="id" disabled="true" value="#{palpiteBEAN.palpite.id}"/>
+                    Id Apostador:    
+                    <h:inputText id="idApostador" disabled="false" value="#{palpiteBEAN.palpite.idApostador}"/>
+                    Id Partida:    
+                    <h:inputText id="idPartida" disabled="false" value="#{palpiteBEAN.palpite.idPartida}"/>
+                    Gols time casa:
+                    <h:inputText id="golsCasa" disabled="false" value="#{palpiteBEAN.palpite.golsCasa}"/>
+                    Gols time visitante:
+                    <h:inputText id="golsVisitante" disabled="false" value="#{palpiteBEAN.palpite.golsVisitante}"/>
+                    Data cadastro:
+                    <h:inputText id="dataCadastro" disabled="true" value="#{palpiteBEAN.palpite.dataCadastro}">
+                        <f:convertDateTime pattern="dd/mm/yyyy"/>
+                    </h:inputText><br/>
+                    <h:commandButton value="Confirmar" action="#{palpiteBEAN.confirmaPalpite()}"/>
+                    <h:commandButton value="Voltar" action="consulta_palpite"/>
+                </h:panelGrid>
+            </h:form>
+            <br/>
+            <h:link outcome="index" value="Retornar ao Menu Inicial" />
+        </center>
+    </h:body>
+</html>
+

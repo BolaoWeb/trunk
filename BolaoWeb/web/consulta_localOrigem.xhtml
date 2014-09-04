@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Consulta Local origem</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h:form>
+                Local Origem <br/><br/>
+                <h:commandButton value="+ Novo Local Origem" action="#{localOrigemBEAN.novoLocalOrigem()}"/> <br/><br/>
+                <h:panelGrid columns="3">
+                    Buscar Local origem:
+                        <h:inputText id="filtro"/> <h:commandButton value="Buscar"/> <br/>
+                </h:panelGrid>
+                <h:dataTable value="#{localOrigemBEAN.listarLocalOrigem()}" var="tabela" border="1">
+                    <h:column>
+                        <f:facet name="header">
+                            ID
+                        </f:facet>
+                        <h:outputText value="#{tabela.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Cidade
+                        </f:facet>
+                        <h:outputText value="#{tabela.cidade}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Estado
+                        </f:facet>
+                        <h:outputText value="#{tabela.estado}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            País
+                        </f:facet>
+                        <h:outputText  value="#{tabela.pais}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Tipo
+                        </f:facet>
+                        <h:outputText  value="#{tabela.tipo}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Ações
+                        </f:facet>
+                        <h:panelGrid columns="2">
+                            <h:commandButton value="Editar" action="#{localOrigemBEAN.carregaLocalOrigem(tabela)}"/>
+                            <h:commandButton value="Remover" action="#{localOrigemBEAN.excluirLocalOrigem(tabela)}"/>
+                        </h:panelGrid>
+                    </h:column>
+                </h:dataTable>
+                <br/>
+                ISS - Implementação de Sistema de Software - Departamento de Informática - UEM
+            </h:form>
+            <br/>
+            <h:link outcome="index" value="Retornar ao Menu Inicial" />
+        </center>
+    </h:body>
+</html>
+

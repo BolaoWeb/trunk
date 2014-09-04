@@ -2,6 +2,8 @@ package bolaoweb.modelDAO;
 
 import bolaoweb.hibernate.HibernateUtil;
 import bolaoweb.model.Times;
+import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,9 +13,18 @@ import org.hibernate.Transaction;
  * @author Massao
  */
 public class TimesDAO {
+
+    private Session session;
+    private Transaction trans;
+    private List<Times> listaTimes;
     
-    public TimesDAO(){
+    public List<Times> getList(){
+        session = HibernateUtil.getSessionFactory().openSession();
         
+        Criteria criteria = session.createCriteria(Times.class);
+        this.listaTimes = criteria.list();
+        
+        return this.listaTimes;
     }
     
     public void incluirTime(Times equipe){

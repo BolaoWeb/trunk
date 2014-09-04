@@ -2,19 +2,24 @@ package bolaoweb.bean;
 
 import bolaoweb.model.LocalOrigem;
 import bolaoweb.modelDAO.LocalOrigemDAO;
+import java.util.List;
 import java.util.Objects;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author Massao
  */
+@ManagedBean
+@SessionScoped
 public class LocalOrigemBEAN {
     
     private LocalOrigem origem = new LocalOrigem();
     private LocalOrigemDAO origemDAO = new LocalOrigemDAO();
+    private List<LocalOrigem> listaOrigem;
     
-    public LocalOrigemBEAN(){
-        
+    public LocalOrigemBEAN() {
     }
 
     public LocalOrigem getOrigem() {
@@ -25,18 +30,10 @@ public class LocalOrigemBEAN {
         this.origem = origem;
     }
 
-    public LocalOrigemDAO getOrigemDAO() {
-        return origemDAO;
-    }
-
-    public void setOrigemDAO(LocalOrigemDAO origemDAO) {
-        this.origemDAO = origemDAO;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.origem);
+        int hash = 3;
+        hash = 67 * hash + Objects.hashCode(this.origem);
         return hash;
     }
 
@@ -54,4 +51,46 @@ public class LocalOrigemBEAN {
         }
         return true;
     }
+    
+    public String incluirLocalOrigem(){
+        origemDAO.incluirLocalOrigem(origem);
+        return "consulta_localOrigem";
+    }
+    
+    public String alterarLocalOrigem(){
+        origemDAO.alterarLocalOrigem(origem);
+        return "consulta_localOrigem";
+    }
+    
+    public String excluirLocalOrigem(LocalOrigem l){
+        origemDAO.excluirLocalOrigem(l);
+        return "consulta_localOrigem";
+    }
+    
+    public List listarLocalOrigem(){
+        listaOrigem = origemDAO.getList();
+        return this.listaOrigem;
+    }
+    
+    public String carregaLocalOrigem(LocalOrigem o){
+        origem = o;
+        return "cadastro_localOrigem";
+    }
+    
+    public String novoLocalOrigem(){
+        origem.setId(null);
+        origem.setCidade(null);
+        origem.setEstado(null);
+        origem.setPais(null);
+        origem.setTipo(null);
+        return "cadastro_localOrigem";
+    }
+    
+    public String confirmarLocalOrigem(){
+        if (listaOrigem.contains(origem)){
+            return alterarLocalOrigem();
+        }
+        return incluirLocalOrigem();
+    }
+    
 }

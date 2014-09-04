@@ -2,26 +2,21 @@ package bolaoweb.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
  * @author Massao
  */
 @Entity
-@NamedQueries(
-    {
-        @NamedQuery(name="Palpite.findAll", query="SELECT p FROM Palpite p "),
-        @NamedQuery(name="Palpite.findByID", query="SELECT p FROM Palpite p WHERE p.id = :Id")
-    }
-)
+@Table
 public class Palpite implements Serializable {
     private static final long serialVersionUID = 1L;
     
@@ -36,7 +31,7 @@ public class Palpite implements Serializable {
     private Long IdPartida;
     
     @Column
-    private Calendar DataCadastro;
+    private Date DataCadastro;
     
     @Column 
     private Integer GolsCasa;
@@ -68,11 +63,11 @@ public class Palpite implements Serializable {
         this.IdPartida = IdPartida;
     }
 
-    public Calendar getDataCadastro() {
+    public Date getDataCadastro() {
         return DataCadastro;
     }
 
-    public void setDataCadastro(Calendar DataCadastro) {
+    public void setDataCadastro(Date DataCadastro) {
         this.DataCadastro = DataCadastro;
     }
 

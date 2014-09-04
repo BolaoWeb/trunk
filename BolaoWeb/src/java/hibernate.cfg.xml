@@ -13,5 +13,8 @@
     <mapping class="bolaoweb.model.Operador"/>
     <mapping class="bolaoweb.model.Usuario"/>
     <mapping class="bolaoweb.model.Partidas"/>
+    <mapping class="bolaoweb.model.LocalOrigem"/>
+    <mapping class="bolaoweb.model.Palpite"/>
+    <mapping class="bolaoweb.model.Times"/>
   </session-factory>
 </hibernate-configuration>
