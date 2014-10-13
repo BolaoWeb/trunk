@@ -14,8 +14,10 @@ public class OperadorBEAN {
     private Operador operador = new Operador();
     private OperadorDAO operadorDAO = new OperadorDAO();
     private List<Operador> listaOperador;
+    public String filtro;
 
     public OperadorBEAN() {
+        setFiltro("");
     }
 
     public Operador getOperador() {
@@ -24,6 +26,14 @@ public class OperadorBEAN {
 
     public void setOperador(Operador operador) {
         this.operador = operador;
+    }
+
+    public String getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
     }
 
     @Override
@@ -65,7 +75,7 @@ public class OperadorBEAN {
     }
 
     public List listarOperador(){
-        listaOperador = operadorDAO.getLista();
+        listaOperador = operadorDAO.getLista(filtro);
         return this.listaOperador;
     }
 

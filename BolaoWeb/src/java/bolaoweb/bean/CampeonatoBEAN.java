@@ -14,8 +14,10 @@ public class CampeonatoBEAN {
     private Campeonato campeonato = new Campeonato();
     private CampeonatoDAO campeonatoDAO = new CampeonatoDAO();
     private List<Campeonato> listaCampeonato;
+    public String filtro;
 
     public CampeonatoBEAN() {
+        setFiltro("");
     }
 
     public Campeonato getCampeonato() {
@@ -24,6 +26,14 @@ public class CampeonatoBEAN {
 
     public void setCampeonato(Campeonato campeonato) {
         this.campeonato = campeonato;
+    }
+
+    public String getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
     }
 
     @Override
@@ -64,7 +74,7 @@ public class CampeonatoBEAN {
     }
 
     public List listarCampeonato(){
-        listaCampeonato = campeonatoDAO.getLista();
+        listaCampeonato = campeonatoDAO.getLista(filtro);
         return this.listaCampeonato;
     }
 

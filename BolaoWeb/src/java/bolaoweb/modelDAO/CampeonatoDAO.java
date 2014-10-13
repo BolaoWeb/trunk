@@ -6,6 +6,8 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 
 public class CampeonatoDAO {
 
@@ -13,10 +15,15 @@ public class CampeonatoDAO {
     private Transaction trans;
     private List<Campeonato> listaCampeonato;
 
-    public List<Campeonato> getLista(){
+    public List<Campeonato> getLista( String filtro ){
         session = HibernateUtil.getSessionFactory().openSession();
 
         Criteria crit = session.createCriteria(Campeonato.class);
+
+        Criterion filtroNome = Restrictions.like("nome",filtro+"%");
+
+        crit.add(filtroNome);
+
         this.listaCampeonato = crit.list();
         return listaCampeonato;
     }

@@ -2,36 +2,67 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
     <h:head>
         <title>Cadastro Apostador</title>
     </h:head>
     <h:body>
-        <center>
-            <h:form>
-                Cadastro de Apostador <br/><br/>
-                <h:panelGrid columns="2">
-                    ID: 
-                        <h:inputText id="id" disabled="true" value="#{apostadorBEAN.apostador.id}"/>
-                    Nome: 
-                        <h:inputText id="nome" value="#{apostadorBEAN.apostador.nome}"/>
-                    Sobrenome: 
-                        <h:inputText id="sobrenome" value="#{apostadorBEAN.apostador.sobrenome}"/>
-                    Apelido: 
-                        <h:inputText id="apelido" value="#{apostadorBEAN.apostador.apelido}"/>
-                    Email: 
-                        <h:inputText id="email" value="#{apostadorBEAN.apostador.email}"/>
-                    Data Nascimento:
-                        <h:inputText id="datanascimento" value="#{apostadorBEAN.apostador.datanascimento}"/>
-                    Senha:
-                        <h:inputSecret id="senha" value="#{apostadorBEAN.apostador.senha}"/>
-                    <h:commandButton value="Confirmar" action="#{apostadorBEAN.confirmarApostador()}"/> <br/><br/>
-                    <h:commandButton value="Voltar" action="consulta_apostador"/> <br/><br/>
-                </h:panelGrid>
-                <br/><br/>
-                ISS - Implementação de Sistema de Software - Departamento de Informática - UEM
-            </h:form>
-        </center>
+        <ui:composition template="layout_padrao.xhtml">  
+            <ui:define name="content">
+                <style>
+                    .input {
+                        width: 100%;
+                    }  
+                </style>
+                <h:form>
+                    <b:container>
+                        <h1><b>Cadastro de Apostador</b></h1> 
+                        <br/>
+                        <b:row>
+                            <b:column span="1"><h:outputLabel value="ID:"/></b:column>
+                            <b:column span="5"><h:inputText id="id" disabled="true" value="#{apostadorBEAN.apostador.id}"/></b:column>
+                        </b:row>
+                        <br/>
+                        <b:row>
+                            <b:column span="1"><h:outputLabel value="Nome:"/></b:column>
+                            <b:column span="5"><h:inputText id="nome" value="#{apostadorBEAN.apostador.nome}"/></b:column>
+                        </b:row>
+                        <br/>
+                        <b:row>
+                            <b:column span="1"><h:outputLabel value="Sobrenome:"/></b:column>
+                            <b:column span="5"><h:inputText id="sobrenome" value="#{apostadorBEAN.apostador.sobrenome}"/></b:column>
+                        </b:row>
+                        <br/>
+                        <b:row>
+                            <b:column span="1"><h:outputLabel value="Apelido:"/></b:column>
+                            <b:column span="5"><h:inputText id="apelido" value="#{apostadorBEAN.apostador.apelido}"/></b:column>
+                        </b:row>
+                        <br/>
+                        <b:row>
+                            <b:column span="1"><h:outputLabel value="Email:"/></b:column>
+                            <b:column span="5"><h:inputText id="email" value="#{apostadorBEAN.apostador.email}"/></b:column>
+                        </b:row>
+                        <br/>
+                        <b:row>
+                            <b:column span="1"><h:outputLabel value="Data Nascimento:"/></b:column>
+                            <b:column span="5"><h:inputText id="datanascimento" value="#{apostadorBEAN.apostador.datanascimento}"/></b:column>
+                        </b:row>
+                        <br/>
+                        <b:row>
+                            <b:column span="1"><h:outputLabel value="Senha:"/></b:column>
+                            <b:column span="5"><h:inputSecret id="senha" value="#{apostadorBEAN.apostador.senha}"/></b:column>
+                        </b:row>
+                        <br/>
+                        <b:row>
+                            <b:column span="2"><h:commandButton value="Confirmar" action="#{apostadorBEAN.confirmarApostador()}" styleClass="btn btn-primary input"/></b:column>
+                            <b:column span="2"><h:commandButton value="Voltar" action="consulta_campeonato" styleClass="btn input"/> <br/><br/></b:column>
+                        </b:row>
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 

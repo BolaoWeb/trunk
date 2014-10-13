@@ -14,8 +14,10 @@ public class ApostadorBEAN {
     private Apostador apostador = new Apostador();
     private ApostadorDAO apostadorDAO = new ApostadorDAO();
     private List<Apostador> listaApostador;
+    public String filtro;
 
     public ApostadorBEAN() {
+        setFiltro("");
     }
 
     public Apostador getApostador() {
@@ -24,6 +26,14 @@ public class ApostadorBEAN {
 
     public void setApostador(Apostador apostador) {
         this.apostador = apostador;
+    }
+
+    public String getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
     }
 
     @Override
@@ -66,7 +76,7 @@ public class ApostadorBEAN {
     }
 
     public List listarApostador(){
-        listaApostador = apostadorDAO.getLista();
+        listaApostador = apostadorDAO.getLista(filtro);
         return this.listaApostador;
     }
 
