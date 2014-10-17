@@ -1,12 +1,15 @@
 package bolaoweb.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="campeonato")
@@ -17,9 +20,11 @@ public class Campeonato implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String nome;
-    private String escopo;
-    private String datainicio;
-    private String datafim;
+    private String escopo; 
+    @Temporal(TemporalType.DATE)    
+    private Date datainicio;
+    @Temporal(TemporalType.DATE)
+    private Date datafim;
     private Boolean tipopontos;
     private Boolean tipomatamata;
     private String observacao;
@@ -51,19 +56,19 @@ public class Campeonato implements Serializable{
         this.escopo = escopo;
     }
 
-    public String getDatainicio() {
+    public Date getDatainicio() {
         return datainicio;
     }
 
-    public void setDatainicio(String datainicio) {
+    public void setDatainicio(Date datainicio) {
         this.datainicio = datainicio;
     }
 
-    public String getDatafim() {
+    public Date getDatafim() {
         return datafim;
     }
 
-    public void setDatafim(String datafim) {
+    public void setDatafim(Date datafim) {
         this.datafim = datafim;
     }
 

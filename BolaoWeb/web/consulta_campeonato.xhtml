@@ -39,11 +39,19 @@
                     <b:container>
                         <h1><b>Consulta de Campeonato</b></h1> 
                         <br/>
-                        <h:commandButton value="+ Novo Campeonato" action="#{campeonatoBEAN.novoCampeonato()}" styleClass="btn btn-primary"/> <br/><br/>
+                        <h:commandButton value="+ Novo Campeonato" action="#{campeonatoBEAN.novoCampeonato()}" styleClass="btn btn-primary"/>
+                        <br/>
+                        <br/>
                         <b:row>
-                            <b:column span="2"><h:outputLabel value="Buscar Campeonato:"/></b:column>
-                            <b:column span="9"><h:inputText id="filtro" value="#{campeonatoBEAN.filtro}" styleClass="input"/></b:column>
-                            <b:column span="1"><h:commandButton value="Buscar" styleClass="input"/></b:column>                            
+                            <b:column span="2">
+                                <h:outputLabel value="Buscar Campeonato:"/>
+                            </b:column>
+                            <b:column span="9">
+                                <h:inputText id="filtro" value="#{campeonatoBEAN.filtro}" styleClass="input"/>
+                            </b:column>
+                            <b:column span="1">
+                                <h:commandButton value="Buscar" styleClass="input"/>
+                            </b:column>                            
                         </b:row>
                         <br/>
                         <h:dataTable value="#{campeonatoBEAN.listarCampeonato()}" var="tabela" styleClass="tabela" headerClass="header" rowClasses="rowAntes,rowDepois">
@@ -69,13 +77,17 @@
                                 <f:facet name="header">
                                     Data Inicio
                                 </f:facet>
-                                <h:outputText value="#{tabela.datainicio}"/>
+                                <h:outputText value="#{tabela.datainicio}">
+                                    <f:convertDateTime pattern="dd/MM/yy"/>
+                                </h:outputText>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     Data Fim
                                 </f:facet>
-                                <h:outputText value="#{tabela.datafim}"/>
+                                <h:outputText value="#{tabela.datafim}">
+                                    <f:convertDateTime pattern="dd/MM/yy"/>
+                                </h:outputText>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
@@ -94,11 +106,18 @@
                                     Ações
                                 </f:facet>
                                 <b:row>
-                                    <b:column span="1"></b:column>
-                                    <b:column span="4"><h:commandButton value="Editar" action="#{campeonatoBEAN.carregaCampeonato(tabela)}" styleClass="input"/></b:column>
-                                    <b:column span="1"></b:column>
-                                    <b:column span="4"><h:commandButton value="Remover" action="#{campeonatoBEAN.excluirCampeonato(tabela)}" styleClass="input"/></b:column>
-                                    <b:column span="1"></b:column>
+                                    <b:column span="1">                                        
+                                    </b:column>
+                                    <b:column span="4">
+                                        <h:commandButton value="Editar" action="#{campeonatoBEAN.carregaCampeonato(tabela)}" styleClass="input"/>
+                                    </b:column>
+                                    <b:column span="1">                                        
+                                    </b:column>
+                                    <b:column span="4">
+                                        <h:commandButton value="Remover" action="#{campeonatoBEAN.excluirCampeonato(tabela)}" styleClass="input"/>
+                                    </b:column>
+                                    <b:column span="1">                                        
+                                    </b:column>
                                 </b:row>
                             </h:column>
                         </h:dataTable>  

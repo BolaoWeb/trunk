@@ -18,36 +18,63 @@
                 </style>
                 <h:form>
                     <b:container>
+                        <h:messages errorStyle="color: red"/>
                         <h1><b>Cadastro de Operador</b></h1> 
                         <br/>
                         <b:row>
-                            <b:column span="1"><h:outputLabel value="ID:"/></b:column>
-                            <b:column span="5"><h:inputText id="id" disabled="true" value="#{operadorBEAN.operador.id}"/></b:column>
+                            <b:column span="1">
+                                <h:outputLabel value="ID:"/>
+                            </b:column>
+                            <b:column span="5">
+                                <h:inputText id="id" disabled="true" value="#{operadorBEAN.operador.id}"/>
+                            </b:column>
                         </b:row>
                         <br/>
                         <b:row>
-                            <b:column span="1"><h:outputLabel value="Nome:"/></b:column>
-                            <b:column span="5"><h:inputText id="nome" value="#{operadorBEAN.operador.nome}"/></b:column>
+                            <b:column span="1">
+                                <h:outputLabel value="Nome:"/>
+                            </b:column>
+                            <b:column span="5">
+                                <h:inputText id="nome" value="#{operadorBEAN.operador.nome}" required="true" requiredMessage="Favor preencher o campo 'Nome'"/>
+                            </b:column>
                         </b:row>
                         <br/>
                         <b:row>
-                            <b:column span="1"><h:outputLabel value="Sobrenome:"/></b:column>
-                            <b:column span="5"><h:inputText id="sobrenome" value="#{operadorBEAN.operador.sobrenome}"/></b:column>
+                            <b:column span="1">
+                                <h:outputLabel value="Sobrenome:"/>
+                            </b:column>
+                            <b:column span="5">
+                                <h:inputText id="sobrenome" value="#{operadorBEAN.operador.sobrenome}" required="true" requiredMessage="Favor preencher o campo 'Sobrenome'"/>
+                            </b:column>
                         </b:row>
                         <br/>
                         <b:row>
-                            <b:column span="1"><h:outputLabel value="Email:"/></b:column>
-                            <b:column span="5"><h:inputText id="email" value="#{operadorBEAN.operador.email}"/></b:column>
+                            <b:column span="1">
+                                <h:outputLabel value="Email:"/>
+                            </b:column>
+                            <b:column span="5">
+                                <h:inputText id="email" value="#{operadorBEAN.operador.email}" required="true" requiredMessage="Favor preencher o campo 'Email'"/>
+                            </b:column>
                         </b:row>
                         <br/>
                         <b:row>
-                            <b:column span="1"><h:outputLabel value="Senha:"/></b:column>
-                            <b:column span="5"><h:inputSecret id="senha" value="#{operadorBEAN.operador.senha}"/></b:column>
+                            <b:column span="1">
+                                <h:outputLabel value="Senha:"/>
+                            </b:column>
+                            <b:column span="5">
+                                <h:inputSecret id="senha" value="#{operadorBEAN.operador.senha}" required="true" requiredMessage="Favor preencher o campo 'Senha'"/>
+                            </b:column>
                         </b:row>
                         <br/>
                         <b:row>
-                            <b:column span="2"><h:commandButton value="Confirmar" action="#{operadorBEAN.confirmarOperador()}" styleClass="btn btn-primary input"/></b:column>
-                            <b:column span="2"><h:commandButton value="Voltar" action="consulta_campeonato" styleClass="btn input"/> <br/><br/></b:column>
+                            <b:column span="2">
+                                <h:commandButton value="Confirmar" action="#{operadorBEAN.confirmarOperador()}" styleClass="btn btn-primary input"/>
+                            </b:column>
+                            <b:column span="2">
+                                <h:commandButton value="Voltar" action="consulta_operador" styleClass="btn input" immediate="true"/>
+                                <br/>
+                                <br/>
+                            </b:column>
                         </b:row>
                     </b:container>
                 </h:form>

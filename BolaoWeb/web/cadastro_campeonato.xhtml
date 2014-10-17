@@ -17,21 +17,34 @@
                     }  
                 </style>
                 <h:form>
-                    <b:container>
+                    <b:container>                        
+                        <h:messages errorStyle="color: red"/>
                         <h1><b>Cadastro de Campeonato</b></h1> 
                         <br/>
                         <b:row>
-                            <b:column span="1"><h:outputLabel value="ID:"/></b:column>
-                            <b:column span="5"><h:inputText id="id" disabled="true" value="#{campeonatoBEAN.campeonato.id}"/></b:column>
+                            <b:column span="1">
+                                <h:outputLabel value="ID:"/>
+                            </b:column>
+                            <b:column span="5">
+                                <h:inputText id="id" disabled="true" value="#{campeonatoBEAN.campeonato.id}"/>
+                            </b:column>
                         </b:row>
                         <br/>
                         <b:row>
-                            <b:column span="1"><h:outputLabel value="Nome:"/></b:column>
-                            <b:column span="5"><h:inputText id="nome" value="#{campeonatoBEAN.campeonato.nome}"/></b:column>
+                            <b:column span="1">
+                                <h:outputLabel value="Nome:"/>
+                            </b:column>
+                            <b:column span="5">
+                                <h:inputText id="nome" value="#{campeonatoBEAN.campeonato.nome}" required="true" requiredMessage="Favor preencher o campo 'Nome'">
+                                    <f:validateLength minimum="4"/>
+                                </h:inputText>
+                            </b:column>
                         </b:row>
                         <br/>
                         <b:row>
-                            <b:column span="1"><h:outputLabel value="Escopo:"/></b:column>
+                            <b:column span="1">
+                                <h:outputLabel value="Escopo:"/>
+                            </b:column>
                             <b:column span="5">
                                 <h:selectOneMenu id="escopo" value="#{campeonatoBEAN.campeonato.escopo}">
                                     <f:selectItem itemValue="regional"/>
@@ -44,17 +57,33 @@
                         </b:row>
                         <br/>
                         <b:row>
-                            <b:column span="1"><h:outputLabel value="Dt. Início:"/></b:column>
-                            <b:column span="5"><h:inputText id="datainicio" value="#{campeonatoBEAN.campeonato.datainicio}"/></b:column>
+                            <b:column span="1">
+                                <h:outputLabel value="Dt. Início:"/>
+                            </b:column>
+                            <b:column span="2">
+                                <b:datepicker id="datainicio" value="#{campeonatoBEAN.campeonato.datainicio}" changeMonth="true" changeYear="true" 
+                                              mode="popup-icon" placeholder="Clique aqui!" required="true" requiredMessage="Favor preencher o campo 'Dt. início'">
+                                    <f:convertDateTime pattern="dd/MM/yy"/>
+                                </b:datepicker>
+                            </b:column>
                         </b:row>
                         <br/>
                         <b:row>
-                            <b:column span="1"><h:outputLabel value="Dt. Fim:"/></b:column>
-                            <b:column span="5"><h:inputText id="datafim" value="#{campeonatoBEAN.campeonato.datafim}"/></b:column>
+                            <b:column span="1">
+                                <h:outputLabel value="Dt. Fim:"/>
+                            </b:column>
+                            <b:column span="2">                                
+                                <b:datepicker id="datafim" value="#{campeonatoBEAN.campeonato.datafim}" changeMonth="true" changeYear="true" 
+                                              mode="popup-icon" placeholder="Clique aqui!" required="true" requiredMessage="Favor preencher o campo 'Dt. Fim'">
+                                    <f:convertDateTime pattern="dd/MM/yy"/>
+                                </b:datepicker>
+                            </b:column>
                         </b:row>
                         <br/>
                         <b:row>
-                            <b:column span="1"><h:outputLabel value="Tipo:"/></b:column>
+                            <b:column span="1">
+                                <h:outputLabel value="Tipo:"/>
+                            </b:column>
                             <b:column span="1">
                                 <h:selectBooleanCheckbox id="tipopontos" value="#{campeonatoBEAN.campeonato.tipoPontos}"/>
                                 <h:outputLabel value="Pontos"/>
@@ -66,13 +95,24 @@
                         </b:row>
                         <br/>
                         <b:row>
-                            <b:column span="1"><h:outputLabel value="Observações"/></b:column>
-                            <b:column span="10"><h:inputTextarea id="observacoes" value="#{campeonatoBEAN.campeonato.observacao}" styleClass="input"/><br/></b:column>
+                            <b:column span="1">
+                                <h:outputLabel value="Observações"/>
+                            </b:column>
+                            <b:column span="10">
+                                <h:inputTextarea id="observacoes" value="#{campeonatoBEAN.campeonato.observacao}" styleClass="input"/>
+                                <br/>
+                            </b:column>
                         </b:row>
                         <br/>
                         <b:row>
-                            <b:column span="2"><h:commandButton value="Confirmar" action="#{campeonatoBEAN.confirmarCampeonato()}" styleClass="btn btn-primary input"/></b:column>
-                            <b:column span="2"><h:commandButton value="Voltar" action="consulta_campeonato" styleClass="btn input"/> <br/><br/></b:column>
+                            <b:column span="2">
+                                <h:commandButton value="Confirmar" action="#{campeonatoBEAN.confirmarCampeonato()}" styleClass="btn btn-primary input"/>
+                            </b:column>
+                            <b:column span="2">
+                                <h:commandButton value="Voltar" action="consulta_campeonato" styleClass="btn input" immediate="true"/>
+                                <br/>
+                                <br/>
+                            </b:column>
                         </b:row>
                     </b:container>
                 </h:form>
