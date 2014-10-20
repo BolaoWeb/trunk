@@ -6,7 +6,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
-        <title>Consulta de Operador</title>
+        <title>Ranking de Apostador</title>
     </h:head>
     <h:body>
         <ui:composition template="layout_padrao.xhtml">  
@@ -37,29 +37,39 @@
                 </style>
                 <h:form>
                     <b:container>
-                        <h1><b>Consulta de Operador</b></h1> 
-                        <br/>
-                        <h:commandButton value="+ Novo Operador" action="#{operadorBEAN.novoOperador()}" styleClass="btn btn-primary"/>
-                        <br/>
+                        <h1><b>Ranking de Apostador</b></h1> 
                         <br/>
                        <b:row>
                             <b:column span="2">
-                                <h:outputLabel value="Buscar Operador"/>
+                                <h:outputLabel value="Selecionar Campeonato"/>
+                            </b:column>
+                            <b:column span="2">
+                               <h:selectOneMenu id="teste" value="#{apostadorBEAN.filtro}">
+                                   <f:selectItems value="#{campeonatoBEAN.listarCampeonato()}" var="campeonatoLista"
+                                                  itemValue="#{campeonatoLista}" itemLabel="#{campeonatoLista.nome}">
+                                   </f:selectItems>
+                                </h:selectOneMenu>
+                            </b:column>
+                        </b:row>
+                        <br/>
+                        <b:row>
+                            <b:column span="2">
+                                <h:outputLabel value="Selecionar Apostador"/>
                             </b:column>
                             <b:column span="9">
-                                <h:inputText id="filtro" value="#{operadorBEAN.filtro}" styleClass="input"/>
+                                <h:inputText id="filtro" value="#{apostadorBEAN.filtro}" styleClass="input"/>
                             </b:column>
                             <b:column span="1">
                                 <h:commandButton value="Buscar" styleClass="input"/>
-                            </b:column>                            
+                            </b:column> 
                         </b:row>
                         <br/>
-                        <h:dataTable value="#{operadorBEAN.listarOperador()}" var="tabela" styleClass="tabela" headerClass="header" rowClasses="rowAntes,rowDepois">
+                        <h:dataTable value="#{apostadorBEAN.listarApostador()}" var="tabela" styleClass="tabela" headerClass="header" rowClasses="rowAntes,rowDepois">
                             <h:column>
                                 <f:facet name="header">
-                                    ID
+                                    Posição
                                 </f:facet>
-                                <h:outputText value="#{tabela.id}"/>
+                                <h:outputText value="-"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
@@ -75,29 +85,10 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    Email
+                                    Pontos
                                 </f:facet>
-                                <h:outputText value="#{tabela.email}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    Ações
-                                </f:facet>
-                                <b:row>
-                                    <b:column span="1">                                        
-                                    </b:column>
-                                    <b:column span="4">
-                                        <h:commandButton value="Editar" action="#{operadorBEAN.carregaOperador(tabela)}" styleClass="input"/>
-                                    </b:column>
-                                    <b:column span="1">                                        
-                                    </b:column>
-                                    <b:column span="4">
-                                        <h:commandButton value="Remover" action="#{operadorBEAN.excluirOperador(tabela)}" styleClass="input"/>
-                                    </b:column>
-                                    <b:column span="1">                                        
-                                    </b:column>
-                                </b:row>
-                            </h:column>
+                                <h:outputText value="0"/>
+                            </h:column>                            
                         </h:dataTable>
                     </b:container>
                 </h:form>

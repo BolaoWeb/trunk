@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Guilherme/Desktop/Projeto/trunk/BolaoWeb/web/consulta_operador.xhtml</file>
-            <file>file:/C:/Users/Guilherme/Desktop/Projeto/trunk/BolaoWeb/src/java/bolaoweb/model/Apostador.java</file>
+            <file>file:/C:/Users/Alison/Downloads/Nova%20pasta/UEM/Donizete%20-%20ISS/Projeto/trunk/BolaoWeb/web/cadastro_campeonato.xhtml</file>
+            <file>file:/C:/Users/Alison/Downloads/Nova%20pasta/UEM/Donizete%20-%20ISS/Projeto/trunk/BolaoWeb/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/Alison/Downloads/Nova%20pasta/UEM/Donizete%20-%20ISS/Projeto/trunk/BolaoWeb/src/java/bolaoweb/bean/LoginBEAN.java</file>
+            <file>file:/C:/Users/Alison/Downloads/Nova%20pasta/UEM/Donizete%20-%20ISS/Projeto/trunk/BolaoWeb/test/bolaoweb/bean/TesteLoginBEAN.java</file>
         </group>
     </open-files>
 </project-private>
