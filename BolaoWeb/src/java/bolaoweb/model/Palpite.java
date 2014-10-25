@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -18,103 +20,105 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Palpite implements Serializable {
-    private static final long serialVersionUID = 1L;
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
-    
-    @Column
-    private Long IdApostador;
-    
-    @Column
-    private Long IdPartida;
-    
-    @Column
-    private Date DataCadastro;
-    
-    @Column 
-    private Integer GolsCasa;
-    
-    @Column
-    private Integer GolsVisitante;
 
-    public Long getId() {
-        return Id;
-    }
+  private static final long serialVersionUID = 1L;
 
-    public void setId(Long Id) {
-        this.Id = Id;
-    }
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long Id;
 
-    public Long getIdApostador() {
-        return IdApostador;
-    }
+  @Column
+  private Long IdApostador;
 
-    public void setIdApostador(Long IdApostador) {
-        this.IdApostador = IdApostador;
-    }
+  @Column
+  private Long IdPartida;
 
-    public Long getIdPartida() {
-        return IdPartida;
-    }
+  @Column
+  @Temporal(value = TemporalType.DATE)
+  private Date DataCadastro;
 
-    public void setIdPartida(Long IdPartida) {
-        this.IdPartida = IdPartida;
-    }
+  @Column
+  private Integer GolsCasa;
 
-    public Date getDataCadastro() {
-        return DataCadastro;
-    }
+  @Column
+  private Integer GolsVisitante;
 
-    public void setDataCadastro(Date DataCadastro) {
-        this.DataCadastro = DataCadastro;
-    }
+  public Long getId() {
+    return Id;
+  }
 
-    public Integer getGolsCasa() {
-        return GolsCasa;
-    }
+  public void setId(Long Id) {
+    this.Id = Id;
+  }
 
-    public void setGolsCasa(Integer GolsCasa) {
-        this.GolsCasa = GolsCasa;
-    }
+  public Long getIdApostador() {
+    return IdApostador;
+  }
 
-    public Integer getGolsVisitante() {
-        return GolsVisitante;
-    }
+  public void setIdApostador(Long IdApostador) {
+    this.IdApostador = IdApostador;
+  }
 
-    public void setGolsVisitante(Integer GolsVisitante) {
-        this.GolsVisitante = GolsVisitante;
-    }
+  public Long getIdPartida() {
+    return IdPartida;
+  }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 19 * hash + Objects.hashCode(this.Id);
-        hash = 19 * hash + Objects.hashCode(this.IdApostador);
-        hash = 19 * hash + Objects.hashCode(this.IdPartida);
-        return hash;
-    }
+  public void setIdPartida(Long IdPartida) {
+    this.IdPartida = IdPartida;
+  }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Palpite other = (Palpite) obj;
-        if (!Objects.equals(this.Id, other.Id)) {
-            return false;
-        }
-        if (!Objects.equals(this.IdApostador, other.IdApostador)) {
-            return false;
-        }
-        if (!Objects.equals(this.IdPartida, other.IdPartida)) {
-            return false;
-        }
-        return true;
+  public Date getDataCadastro() {
+    return DataCadastro;
+  }
+
+  public void setDataCadastro(Date DataCadastro) {
+    this.DataCadastro = DataCadastro;
+  }
+
+  public Integer getGolsCasa() {
+    return GolsCasa;
+  }
+
+  public void setGolsCasa(Integer GolsCasa) {
+    this.GolsCasa = GolsCasa;
+  }
+
+  public Integer getGolsVisitante() {
+    return GolsVisitante;
+  }
+
+  public void setGolsVisitante(Integer GolsVisitante) {
+    this.GolsVisitante = GolsVisitante;
+  }
+
+  @Override
+  public int hashCode() {
+    int hash = 5;
+    hash = 19 * hash + Objects.hashCode(this.Id);
+    hash = 19 * hash + Objects.hashCode(this.IdApostador);
+    hash = 19 * hash + Objects.hashCode(this.IdPartida);
+    return hash;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null) {
+      return false;
     }
-    
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final Palpite other = (Palpite) obj;
+    if (!Objects.equals(this.Id, other.Id)) {
+      return false;
+    }
+    if (!Objects.equals(this.IdApostador, other.IdApostador)) {
+      return false;
+    }
+    if (!Objects.equals(this.IdPartida, other.IdPartida)) {
+      return false;
+    }
+    return true;
+  }
+
 }

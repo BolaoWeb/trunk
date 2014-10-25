@@ -16,84 +16,82 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class LocalOrigem implements Serializable {
-    private static final long serialVersionUID = 1L;
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
-    
-    @Column
-    private String Cidade;
-    
-    @Column
-    private String Estado;
-    
-    @Column
-    private String Pais;
-    
-    @Column
-    private String Tipo;
 
-    public Long getId() {
-        return Id;
-    }
+  private static final long serialVersionUID = 1L;
 
-    public void setId(Long Id) {
-        this.Id = Id;
-    }
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long Id;
 
-    public String getCidade() {
-        return Cidade;
-    }
+  @Column
+  private String Cidade;
 
-    public void setCidade(String Cidade) {
-        this.Cidade = Cidade;
-    }
+  @Column
+  private String Estado;
 
-    public String getEstado() {
-        return Estado;
-    }
+  @Column
+  private String Pais;
 
-    public void setEstado(String Estado) {
-        this.Estado = Estado;
-    }
+  //@Column
+  //private String Tipo;
+  public Long getId() {
+    return Id;
+  }
 
-    public String getPais() {
-        return Pais;
-    }
+  public void setId(Long Id) {
+    this.Id = Id;
+  }
 
-    public void setPais(String Pais) {
-        this.Pais = Pais;
-    }
+  public String getCidade() {
+    return Cidade;
+  }
 
-    public String getTipo() {
-        return Tipo;
-    }
+  public void setCidade(String Cidade) {
+    this.Cidade = Cidade;
+  }
 
-    public void setTipo(String Tipo) {
-        this.Tipo = Tipo;
-    }
+  public String getEstado() {
+    return Estado;
+  }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 41 * hash + Objects.hashCode(this.Id);
-        return hash;
-    }
+  public void setEstado(String Estado) {
+    this.Estado = Estado;
+  }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final LocalOrigem other = (LocalOrigem) obj;
-        if (!Objects.equals(this.Id, other.Id)) {
-            return false;
-        }
-        return true;
+  public String getPais() {
+    return Pais;
+  }
+
+  public void setPais(String Pais) {
+    this.Pais = Pais;
+  }
+
+    //public String getTipo() {
+  //    return Tipo;
+  //}
+  //public void setTipo(String Tipo) {
+  //    this.Tipo = Tipo;
+  //}
+  @Override
+  public int hashCode() {
+    int hash = 7;
+    hash = 41 * hash + Objects.hashCode(this.Id);
+    return hash;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null) {
+      return false;
     }
-    
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final LocalOrigem other = (LocalOrigem) obj;
+    if (!Objects.equals(this.Id, other.Id)) {
+      return false;
+    }
+    return true;
+  }
+
 }

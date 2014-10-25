@@ -1,11 +1,11 @@
 package bolaoweb.model;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,9 +21,12 @@ public class Partidas implements Serializable{
     @Id
     @GeneratedValue
     private int id;
-    private int idTimeCasa;
-    private int idTimeVisitante;
-    private String data;
+    @OneToOne
+    private Times timeCasa;
+    @OneToOne
+    private Times timeVisitante;
+    @Temporal(TemporalType.DATE)
+    private Date dataPartida;
     private int golsTimeCasa;
     private int golsTimeVisitante;
 
@@ -35,28 +38,28 @@ public class Partidas implements Serializable{
         this.id = id;
     }
 
-    public int getIdTimeCasa() {
-        return idTimeCasa;
+    public Times getTimeCasa() {
+        return timeCasa;
     }
 
-    public void setIdTimeCasa(int idTimeCasa) {
-        this.idTimeCasa = idTimeCasa;
+    public void setTimeCasa(Times timeCasa) {
+        this.timeCasa = timeCasa;
     }
 
-    public int getIdTimeVisitante() {
-        return idTimeVisitante;
+    public Times getTimeVisitante() {
+        return timeVisitante;
     }
 
-    public void setIdTimeVisitante(int idTimeVisitante) {
-        this.idTimeVisitante = idTimeVisitante;
+    public void setTimeVisitante(Times timeVisitante) {
+        this.timeVisitante = timeVisitante;
     }
 
-    public String getData() {
-        return data;
+    public Date getData() {
+        return dataPartida;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setData(Date data) {
+        this.dataPartida = data;
     }
 
     public int getGolsTimeCasa() {

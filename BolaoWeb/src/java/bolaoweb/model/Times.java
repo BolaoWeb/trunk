@@ -15,78 +15,79 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class Times implements Serializable{
-    private static final long serialVersionUID = 1L;
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
-    
-    @Column
-    private Long IdLocalTime;
-    
-    @Column
-    private String Tipo;
-    
-    @Column 
-    private String Nome;
+public class Times implements Serializable {
 
-    public Long getId() {
-        return Id;
-    }
+  private static final long serialVersionUID = 1L;
 
-    public void setId(Long Id) {
-        this.Id = Id;
-    }
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long Id;
 
-    public Long getIdLocalTime() {
-        return IdLocalTime;
-    }
+  @Column
+  private Long IdLocalTime;
 
-    public void setIdLocalTime(Long IdLocalTime) {
-        this.IdLocalTime = IdLocalTime;
-    }
+  @Column
+  private String Tipo;
 
-    public String getTipo() {
-        return Tipo;
-    }
+  @Column
+  private String Nome;
 
-    public void setTipo(String Tipo) {
-        this.Tipo = Tipo;
-    }
+  public Long getId() {
+    return Id;
+  }
 
-    public String getNome() {
-        return Nome;
-    }
+  public void setId(Long Id) {
+    this.Id = Id;
+  }
 
-    public void setNome(String Nome) {
-        this.Nome = Nome;
-    }
+  public Long getIdLocalTime() {
+    return IdLocalTime;
+  }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 17 * hash + Objects.hashCode(this.Id);
-        hash = 17 * hash + Objects.hashCode(this.IdLocalTime);
-        return hash;
-    }
+  public void setIdLocalTime(Long IdLocalTime) {
+    this.IdLocalTime = IdLocalTime;
+  }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Times other = (Times) obj;
-        if (!Objects.equals(this.Id, other.Id)) {
-            return false;
-        }
-        if (!Objects.equals(this.IdLocalTime, other.IdLocalTime)) {
-            return false;
-        }
-        return true;
+  public String getTipo() {
+    return Tipo;
+  }
+
+  public void setTipo(String Tipo) {
+    this.Tipo = Tipo;
+  }
+
+  public String getNome() {
+    return Nome;
+  }
+
+  public void setNome(String Nome) {
+    this.Nome = Nome;
+  }
+
+  @Override
+  public int hashCode() {
+    int hash = 5;
+    hash = 17 * hash + Objects.hashCode(this.Id);
+    hash = 17 * hash + Objects.hashCode(this.IdLocalTime);
+    return hash;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null) {
+      return false;
     }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final Times other = (Times) obj;
+    if (!Objects.equals(this.Id, other.Id)) {
+      return false;
+    }
+    if (!Objects.equals(this.IdLocalTime, other.IdLocalTime)) {
+      return false;
+    }
+    return true;
+  }
 
 }

@@ -15,89 +15,98 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class PalpiteBEAN {
-    
-    private Palpite palpite = new Palpite();
-    private PalpiteDAO palpiteDAO = new PalpiteDAO();
-    private List<Palpite> listaPalpite;
 
-    public Palpite getPalpite() {
-        return palpite;
-    }
+  private Palpite palpite = new Palpite();
+  private PalpiteDAO palpiteDAO = new PalpiteDAO();
+  private List<Palpite> listaPalpite;
+  public String filtro;
 
-    public void setPalpite(Palpite palpite) {
-        this.palpite = palpite;
-    }
+  public PalpiteBEAN() {
+  }
+  
+  public void setFiltro(String filtro){
+    this.filtro = filtro;
+  }
+  
+  public String getFiltro(){
+    return filtro;
+  }
 
-    public List listaPalpite() {
-        listaPalpite = palpiteDAO.getLista();
-        return listaPalpite;
-    }
+  public Palpite getPalpite() {
+    return palpite;
+  }
 
-    public PalpiteBEAN() {
-    }
-    
-    public String incluirPalpite(){
-        palpiteDAO.incluirPalpite(palpite);
-        palpite.setDataCadastro(Calendar.getInstance().getTime());
-        palpite.setGolsCasa(null);
-        palpite.setGolsVisitante(null);
-        palpite.setIdApostador(null);
-        palpite.setIdPartida(null);
-        return "consulta_palpite";
-    }
-    
-    public String alterarPalpite(){
-        palpiteDAO.alterarPalpite(palpite);
-        return "consulta_palpite";
-    }
-    
-    public String excluirPalpite(Palpite p){
-        palpiteDAO.excluirPalpite(p);
-        return "consulta_palpite";
-    }
+  public void setPalpite(Palpite palpite) {
+    this.palpite = palpite;
+  }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.palpite);
-        return hash;
-    }
+  public List listaPalpite() {
+    listaPalpite = palpiteDAO.getLista();
+    return listaPalpite;
+  }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final PalpiteBEAN other = (PalpiteBEAN) obj;
-        if (!Objects.equals(this.palpite, other.palpite)) {
-            return false;
-        }
-        return true;
+  public String incluirPalpite() {
+    palpiteDAO.incluirPalpite(palpite);
+    palpite.setDataCadastro(Calendar.getInstance().getTime());
+    palpite.setGolsCasa(null);
+    palpite.setGolsVisitante(null);
+    palpite.setIdApostador(null);
+    palpite.setIdPartida(null);
+    return "consulta_palpite";
+  }
+
+  public String alterarPalpite() {
+    palpiteDAO.alterarPalpite(palpite);
+    return "consulta_palpite";
+  }
+
+  public String excluirPalpite(Palpite p) {
+    palpiteDAO.excluirPalpite(p);
+    return "consulta_palpite";
+  }
+
+  @Override
+  public int hashCode() {
+    int hash = 7;
+    hash = 79 * hash + Objects.hashCode(this.palpite);
+    return hash;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null) {
+      return false;
     }
-    
-    public String carregaPalpite(Palpite p){
-        palpite = p;
-        return "cadastro_palpite";
+    if (getClass() != obj.getClass()) {
+      return false;
     }
-    
-    public String novoPalpite(){
-        palpite.setId(null);
-        palpite.setIdApostador(null);
-        palpite.setIdPartida(null);
-        palpite.setGolsCasa(null);
-        palpite.setGolsVisitante(null);
-        palpite.setDataCadastro(null);
-        return "cadastro_palpite";
+    final PalpiteBEAN other = (PalpiteBEAN) obj;
+    if (!Objects.equals(this.palpite, other.palpite)) {
+      return false;
     }
-    
-    public String confirmaPalpite(){
-        if (listaPalpite.contains(palpite)){
-            return alterarPalpite();
-        }
-        return incluirPalpite();
+    return true;
+  }
+
+  public String carregaPalpite(Palpite p) {
+    palpite = p;
+    return "cadastro_palpite";
+  }
+
+  public String novoPalpite() {
+    palpite.setId(null);
+    palpite.setIdApostador(null);
+    palpite.setIdPartida(null);
+    palpite.setGolsCasa(null);
+    palpite.setGolsVisitante(null);
+    palpite.setDataCadastro(Calendar.getInstance().getTime());
+    return "cadastro_palpite";
+  }
+
+  public String confirmaPalpite() {
+    if (listaPalpite.contains(palpite)) {
+      return alterarPalpite();
     }
-    
+    return incluirPalpite();
+  }
+
 }
